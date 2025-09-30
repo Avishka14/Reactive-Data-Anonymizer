@@ -110,8 +110,8 @@ rules:
 
 ```sh
 POST /api/anonymize
-Content-Type: application/json
-Accept: application/json
+Content-Type: application/x-ndjson
+Accept: application/x-ndjson
 
 ```
 
@@ -170,3 +170,8 @@ mvn clean install
 mvn spring-boot:run
 ```
 
+## Contributing
+
+Contributions are welcome!
+
+ - &copy; Avishka14
