@@ -2,124 +2,16 @@
 <html>
 <head>
     <title>Reactive Anonymizer Demo</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 40px 20px;
-            background-color: #f0f2f5; /* Very light, modern background */
-            display: flex;
-            justify-content: center;
-            align-items: flex-start; /* Align content to the top */
-            min-height: 100vh;
-        }
-
-        /* The Card Container */
-        .anonymizer-card {
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 12px; /* Smoothly rounded corners */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft, modern shadow */
-            width: 100%;
-            max-width: 400px; /* Fixed width for the card */
-            margin-bottom: 20px; /* Space below the card */
-        }
-
-        h2 {
-            color: #1877f2; /* Facebook blue or similar vibrant color */
-            text-align: center;
-            margin-top: 0;
-            margin-bottom: 25px;
-            font-weight: 600;
-        }
-
-        h3 {
-            color: #333;
-            margin-top: 25px;
-            margin-bottom: 10px;
-            font-size: 1.1rem;
-            border-bottom: 1px solid #e0e0e0;
-            padding-bottom: 5px;
-        }
-
-        /* Styling for the input fields */
-        input {
-            width: 100%; /* Fill the card width */
-            padding: 12px 15px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px; /* Slightly more rounded than before */
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        input:focus {
-            border-color: #1877f2; /* Highlight focus with the accent color */
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(24, 119, 242, 0.2);
-        }
-
-        /* Styling for the button */
-        button {
-            width: 100%;
-            background-color: #28a745; /* Modern success green */
-            color: white;
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.1s;
-        }
-
-        button:hover {
-            background-color: #218838;
-        }
-
-        button:active {
-            transform: scale(0.99);
-        }
-
-        /* Styling for the result area */
-        #result {
-            background-color: #f8f8fa; /* Light, distinct background for results */
-            padding: 15px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            white-space: pre-wrap;
-            overflow-x: auto;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.9rem;
-            line-height: 1.4;
-        }
-
-        /* Remove default line breaks from the original structure */
-        .input-group {
-            margin-bottom: 15px;
-        }
-    </style>
 </head>
-<body>
-<div class="anonymizer-card">
-    <h2>Reactive Data Anonymizer</h2>
+<body style="font-family:sans-serif; margin:2rem;">
+<h2>Reactive Data Anonymizer</h2>
+<input id="name" placeholder="Name"><br><br>
+<input id="email" placeholder="Email"><br><br>
+<input id="age" placeholder="Age"><br><br>
+<button onclick="anonymize()">Anonymize</button>
 
-    <div class="input-group">
-        <input id="name" placeholder="Name" type="text">
-    </div>
-    <div class="input-group">
-        <input id="email" placeholder="Email Address" type="email">
-    </div>
-    <div class="input-group">
-        <input id="age" placeholder="Age (e.g., 30)" type="number">
-    </div>
-
-    <button onclick="anonymize()">Anonymize Data</button>
-
-    <h3>Result:</h3>
-    <pre id="result"></pre>
-</div>
+<h3>Result:</h3>
+<pre id="result"></pre>
 
 <script>
     async function anonymize() {
@@ -131,7 +23,7 @@
         }
       ];
 
-      // Convert to NDJSON string
+
       const ndjson = input.map(obj => JSON.stringify(obj)).join('\n');
 
       const response = await fetch("/api/anonymize", {
