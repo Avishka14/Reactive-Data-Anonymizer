@@ -1,0 +1,7 @@
+rules:
+  - field: email
+    type: mask
+    strategy: keep-domain
+  - field: phone
+    type: mask
+    strategy: last-4-digits
